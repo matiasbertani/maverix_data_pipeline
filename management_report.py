@@ -1,5 +1,7 @@
 import pandas as pd
 
+from users_map import UsersMap
+
 
 class ManagementReport:
 
@@ -37,6 +39,7 @@ class ManagementReport:
         df = self._set_next_payment_datetime(df)
         df = self._set_next_payment_amount_as_int(df)
         df = self._replace_special_characters(df)
+        df = self._set_nx_users(df)
         df = self._delete_unnecessary_columns(df)
 
         return df
@@ -78,6 +81,11 @@ class ManagementReport:
                 .replace("Ã\x9a", "Ú")
                 .replace("Ã\x91", "Ñ")
         )
+
+    def _set_nx_users(self, df: pd.DataFrame) -> pd.DataFrame:
+        osiris_nx_users_map = UsersMap().get_map()
+        df['nx_users'] = df['executive'].map(osiris_nx_users_map)
+        return df
 
     def _delete_unnecessary_columns(self, df: pd.DataFrame) -> pd.DataFrame:
         return df.drop(columns=['operation_date', 'operation_time', 'next_payment_date'])
