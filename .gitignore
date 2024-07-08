@@ -128,3 +128,5 @@ dmypy.json
 #others
 
 .DS_Store
+
+notebooks/
