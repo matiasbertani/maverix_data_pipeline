@@ -23,15 +23,15 @@ class ManagementReport:
     data_encoding = 'latin1'
 
     def __init__(self) -> None:
-        self.management_report = pd.read_csv(
+        self.data = pd.read_csv(
             self.filename,
             sep=self.data_delimiter,
             encoding=self.data_encoding,
             usecols=self.columns_to_work_with.keys(),
             dtype=str
         )
-        self.management_report.rename(columns=self.columns_to_work_with, inplace=True)
-        self.management_report = self._format_management_report(self.management_report)
+        self.data.rename(columns=self.columns_to_work_with, inplace=True)
+        self.data = self._format_management_report(self.data)
 
     def _format_management_report(self, df: pd.DataFrame) -> pd.DataFrame:
 
@@ -70,7 +70,7 @@ class ManagementReport:
         df["substatus"] = self._replace_special_chars_in_column(df["substatus"])
         return df
 
-    def _replace_special_chars_in_column(columns: pd.Series) -> pd.Series:
+    def _replace_special_chars_in_column(self, columns: pd.Series) -> pd.Series:
         return columns.apply(
             lambda result:
                 result
