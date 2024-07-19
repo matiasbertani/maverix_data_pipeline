@@ -8,6 +8,8 @@ class PreTransformedReport:
 
     action_map_source = pd.read_csv("actions_map_osiris_naranjax.csv", sep=";", dtype=str).values
     response_map_source = pd.read_csv("response_ids_map_osiris_naranjax.csv", sep=";", dtype=str).values
+    whatsapp_results = pd.read_csv(
+        "whatsapp_results.csv", sep=";", dtype=str)["osiris_results"].values.tolist()
 
     actions_with_common_transformation = [
         'LLAMADA SALIENTE',
@@ -73,8 +75,8 @@ class PreTransformedReport:
         return df
 
     def _transform_whatsapp_actions_for_the_right_substatus(self, df: pd.DataFrame) -> pd.DataFrame:
-        whatsapp_results = pd.read_csv("whatsapp_results.csv", sep=";", dtype=str)["osiris_results"].values.tolist()
-        rows_to_transform = (df["action"] == "WHATSAPP") & (df["result"].isin(whatsapp_results))
+
+        rows_to_transform = (df["action"] == "WHATSAPP") & (df["result"].isin(self.whatsapp_results))
 
         df.loc[rows_to_transform, "nx_action_id"] = (
             df.loc[rows_to_transform, "action"].apply(lambda action: self.actions_id_map.get(action, pd.NA))
