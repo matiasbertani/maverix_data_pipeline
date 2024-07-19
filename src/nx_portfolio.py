@@ -1,6 +1,6 @@
 import pandas as pd
 
-from constants import INPUT_PATH
+from .constants import INPUT_PATH
 
 
 class NxPortfolio:

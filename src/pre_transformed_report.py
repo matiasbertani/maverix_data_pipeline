@@ -1,9 +1,9 @@
 import pandas as pd
 
-from management_report import ManagementReport
-from nx_portfolio import NxPortfolio
+from .management_report import ManagementReport
+from .nx_portfolio import NxPortfolio
 
-from constants import DATABASE_PATH
+from .constants import DATABASE_PATH
 
 
 class PreTransformedReport:
@@ -63,9 +63,9 @@ class PreTransformedReport:
         return df
 
     def _transform_whatsapp_actions(self, df: pd.DataFrame) -> pd.DataFrame:
-        df = self.transform_whatsapp_actions_for_direct_contact_substatus(df)
-        df = self.transform_whatsapp_actions_for_the_right_substatus(df)
-        df = self.trasnform_whatsapp_actions_for_wrong_osiris_resulst(df)
+        df = self._transform_whatsapp_actions_for_direct_contact_substatus(df)
+        df = self._transform_whatsapp_actions_for_the_right_substatus(df)
+        df = self._trasnform_whatsapp_actions_for_wrong_osiris_resulst(df)
         return df
 
     def _transform_whatsapp_actions_for_direct_contact_substatus(self, df: pd.DataFrame) -> pd.DataFrame:

@@ -1,6 +1,6 @@
 import pandas as pd
 
-from constants import DATABASE_PATH
+from .constants import DATABASE_PATH
 
 
 class UsersMap:

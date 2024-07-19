@@ -1,7 +1,7 @@
 from pathlib import Path
 
 
-ROOT_PATH = Path(__file__).resolve().parent
+ROOT_PATH = Path(__file__).resolve().parent.parent
 DATABASE_PATH = ROOT_PATH / "database"
 INPUT_PATH = ROOT_PATH / "input"
 RESULTS_PATH = ROOT_PATH / "results"

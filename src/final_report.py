@@ -1,6 +1,6 @@
 import pandas as pd
 
-from constants import (
+from .constants import (
     DATABASE_PATH,
     RESULTS_PATH,
     VERIFICATION_PATH,

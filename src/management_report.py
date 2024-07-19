@@ -1,8 +1,8 @@
 import pandas as pd
 
-from users_map import UsersMap
+from .users_map import UsersMap
 
-from constants import INPUT_PATH
+from .constants import INPUT_PATH
 
 
 class ManagementReport:
