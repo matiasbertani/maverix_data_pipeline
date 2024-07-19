@@ -130,3 +130,15 @@ dmypy.json
 .DS_Store
 
 notebooks/
+
+database/*
+!database/.gitkeep
+
+input/*
+!input/.gitkeep
+
+results/*
+!results/.gitkeep
+
+verification/*
+!verification/.gitkeep
