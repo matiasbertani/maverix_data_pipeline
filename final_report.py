@@ -1,9 +1,15 @@
 import pandas as pd
 
+from constants import (
+    DATABASE_PATH,
+    RESULTS_PATH,
+    VERIFICATION_PATH,
+)
+
 
 class FinalReport:
 
-    report_model = pd.read_csv("report_model.csv", sep=";", dtype=str, nrows=0)
+    report_model = pd.read_csv(DATABASE_PATH / "report_model.csv", sep=";", dtype=str, nrows=0)
 
     def __init__(self, transformed_report: pd.DataFrame) -> None:
         self.transformed_report = transformed_report.copy()
@@ -57,6 +63,5 @@ class FinalReport:
         if na_rows > 0:
             raise ValueError(f"Existen {na_rows} filas en la columna {id_column} vacias")
 
-    def save(self, path: str = "final_report.csv"):
-        self.final_report.to_csv(path, sep=";", index=False)
-        return path
+    def save(self, filename: str = "final_report.csv") -> None:
+        self.final_report.to_csv(RESULTS_PATH / filename, sep=";", index=False)

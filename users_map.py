@@ -1,5 +1,7 @@
 import pandas as pd
 
+from constants import DATABASE_PATH
+
 
 class UsersMap:
 
@@ -9,7 +11,7 @@ class UsersMap:
 
     def __init__(self) -> None:
         self.users_map = pd.read_csv(
-            self.filename,
+            DATABASE_PATH / self.filename,
             sep=self.data_delimiter,
             encoding=self.data_encoding,
             dtype=str

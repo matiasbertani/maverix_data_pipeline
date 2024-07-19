@@ -1,5 +1,7 @@
 import pandas as pd
 
+from constants import INPUT_PATH
+
 
 class NxPortfolio:
     columns_to_work_with = {
@@ -13,7 +15,7 @@ class NxPortfolio:
 
     def __init__(self) -> None:
         self.data = pd.read_excel(
-            'cartera.xlsx',  # FIXME the data must be read from "input" folder
+            INPUT_PATH / 'cartera.xlsx',
             usecols=self.columns_to_work_with,
             dtype=str,
         )

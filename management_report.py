@@ -2,6 +2,8 @@ import pandas as pd
 
 from users_map import UsersMap
 
+from constants import INPUT_PATH
+
 
 class ManagementReport:
 
@@ -26,7 +28,7 @@ class ManagementReport:
 
     def __init__(self) -> None:
         self.data = pd.read_csv(
-            self.filename,
+            INPUT_PATH / self.filename,
             sep=self.data_delimiter,
             encoding=self.data_encoding,
             usecols=self.columns_to_work_with.keys(),

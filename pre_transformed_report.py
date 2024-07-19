@@ -3,13 +3,15 @@ import pandas as pd
 from management_report import ManagementReport
 from nx_portfolio import NxPortfolio
 
+from constants import DATABASE_PATH
+
 
 class PreTransformedReport:
 
-    action_map_source = pd.read_csv("actions_map_osiris_naranjax.csv", sep=";", dtype=str).values
-    response_map_source = pd.read_csv("response_ids_map_osiris_naranjax.csv", sep=";", dtype=str).values
+    action_map_source = pd.read_csv(DATABASE_PATH / "actions_map_osiris_naranjax.csv", sep=";", dtype=str).values
+    response_map_source = pd.read_csv(DATABASE_PATH / "response_ids_map_osiris_naranjax.csv", sep=";", dtype=str).values
     whatsapp_results = pd.read_csv(
-        "whatsapp_results.csv", sep=";", dtype=str)["osiris_results"].values.tolist()
+        DATABASE_PATH / "whatsapp_results.csv", sep=";", dtype=str)["osiris_results"].values.tolist()
 
     actions_with_common_transformation = [
         'LLAMADA SALIENTE',
