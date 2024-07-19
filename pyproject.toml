@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "maverix-data-pipeline"
+version = "0.1.0"
+description = ""
+authors = ["Matias Bertani <matiasbertani@gmail.com>"]
+readme = "README.md"
+packages = [{include = "maverix_data_pipeline"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.2.2"
+openpyxl = "^3.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
