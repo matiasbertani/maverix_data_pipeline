@@ -13,5 +13,6 @@ if __name__ == "__main__":
 
     final_report = FinalReport(transformed_report)
     final_report.generate()
+    final_report.write_verification()
     final_report.validate()
     final_report.save()

@@ -54,6 +54,9 @@ class FinalReport:
         verification_df.insert(idx + 3, "osiris_substatus", self.transformed_report["substatus"])
         return verification_df
 
+    def write_verification(self, filename: str = "verification.csv") -> None:
+        self.verification_df.to_csv(VERIFICATION_PATH / filename, sep=";", index=False)
+
     def validate(self) -> None:
         self._validate_the_final_report_transformation("action_id_nx")
         self._validate_the_final_report_transformation("result_id_nx")
