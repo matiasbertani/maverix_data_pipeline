@@ -22,6 +22,8 @@ class ManagementReport:
     data_delimiter = ';'
     data_encoding = 'latin1'
 
+    osiris_nx_users_map = UsersMap().get_map()
+
     def __init__(self) -> None:
         self.data = pd.read_csv(
             self.filename,
@@ -83,8 +85,7 @@ class ManagementReport:
         )
 
     def _set_nx_users(self, df: pd.DataFrame) -> pd.DataFrame:
-        osiris_nx_users_map = UsersMap().get_map()
-        df['nx_users'] = df['executive'].map(osiris_nx_users_map)
+        df['nx_users'] = df['executive'].map(self.osiris_nx_users_map)
         return df
 
     def _delete_unnecessary_columns(self, df: pd.DataFrame) -> pd.DataFrame:
