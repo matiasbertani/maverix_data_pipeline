@@ -66,5 +66,9 @@ class FinalReport:
         if na_rows > 0:
             raise ValueError(f"Existen {na_rows} filas en la columna {id_column} vacias")
 
-    def save(self, filename: str = "final_report.csv") -> None:
-        self.final_report.to_csv(RESULTS_PATH / filename, sep=";", index=False)
+    def save(self) -> None:
+        filename = self._get_filename()
+        self.final_report.to_csv(RESULTS_PATH / filename, sep="|", index=False, header=False)
+
+    def _get_filename(self) -> str:
+        return f"CUERVO_TARDIANDX_{pd.Timestamp.now().strftime('%Y%m%d')}.txt"
