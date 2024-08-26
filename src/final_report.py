@@ -60,6 +60,7 @@ class FinalReport:
     def validate(self) -> None:
         self._validate_the_final_report_transformation("action_id_nx")
         self._validate_the_final_report_transformation("result_id_nx")
+        self._validate_the_final_report_transformation("nx_users")
 
     def _validate_the_final_report_transformation(self, id_column: str) -> None:
         na_rows = self.final_report[id_column].isna().sum()
