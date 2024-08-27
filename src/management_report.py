@@ -49,14 +49,14 @@ class ManagementReport:
         return df
 
     def _set_operation_datetime(self, df: pd.DataFrame) -> pd.DataFrame:
-        df['operation_datetime'] = pd.to_datetime(df['operation_date'] + df['operation_time'], format='%Y-%m-%d%H:%M')
+        df['operation_datetime'] = pd.to_datetime(df['operation_date'] + df['operation_time'], format='%d/%m/%Y%H:%M')
         df['operation_datetime'] = df['operation_datetime'].dt.strftime("%Y%m%d%H%M%S")
         return df
 
     def _set_next_payment_datetime(self, df: pd.DataFrame) -> pd.DataFrame:
         operations_with_next_payments = df['next_payment_date'] != '0000-00-00'
         df.loc[operations_with_next_payments, 'next_payment_datetime'] = pd.to_datetime(
-            df.loc[operations_with_next_payments, 'next_payment_date'], format='%Y-%m-%d'
+            df.loc[operations_with_next_payments, 'next_payment_date'], format='%d/%m/%Y'
         )
         df['next_payment_datetime'] = df['next_payment_datetime'].dt.strftime("%Y%m%d%H%M%S")
         return df
