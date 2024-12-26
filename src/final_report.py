@@ -25,7 +25,7 @@ class FinalReport:
         final_report["product"] = self.transformed_report["product"]
         final_report["nx_col_02"] = self.transformed_report["nx_digital"]
         final_report["data_col_01"] = "PRESTAMO P"
-        final_report["index"] = self.transformed_report.index
+        final_report["index"] = self.transformed_report.index + 1
         final_report["user_nx"] = self.transformed_report["nx_users"]  # FIXME name inconsistence between dfs
         final_report["data_col_02"] = "N"
         final_report["action_id_nx"] = self.transformed_report["nx_action_id"]
